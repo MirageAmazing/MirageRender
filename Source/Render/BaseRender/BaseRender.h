@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Windows.h>
 #include <memory>
+#include "../Platform.h"
 using namespace std;
 
 enum RenderType
@@ -13,7 +13,7 @@ enum RenderType
 class BaseRender
 {
 public:
-	BaseRender(int iScreenWidth, int iScreenHeight, HWND hWnd);
+	BaseRender(int iScreenWidth, int iScreenHeight, void* pWindowHandle);
 	BaseRender(BaseRender&& render);
 	virtual ~BaseRender();
 	BaseRender(BaseRender&) = delete;
@@ -30,10 +30,10 @@ protected:
 	int mRenderWidth = 800;
 	int mRenderHeight = 600;
 	float mClearColor[3]{0,0,0};
-	HWND mHwnd;
+	void* mWindowHandle;
 
 public:
-	static unique_ptr<BaseRender> GetRender(RenderType type, int iScreenWidth, int iScreenHeight, HWND hWnd);
+	static unique_ptr<BaseRender> GetRender(RenderType type, int iScreenWidth, int iScreenHeight, void* pWindowHandle);
 
 private:
 	static unique_ptr<BaseRender> mBaseRender;

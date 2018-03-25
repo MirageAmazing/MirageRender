@@ -1,7 +1,15 @@
 #include "RenderDX11.h"
 
-RenderDX11::RenderDX11(int iScreenWidth, int iScreenHeight, HWND hWnd) :BaseRender(iScreenWidth, iScreenHeight, hWnd)
+#if defined(MIRAGE_PLATFORM_WINDOWS)
+
+RenderDX11::RenderDX11(int iScreenWidth, int iScreenHeight, void* pWindowHandle) :BaseRender(iScreenWidth, iScreenHeight, pWindowHandle)
 {
+	SDL_SysWMinfo wmInfo;
+	SDL_VERSION(&wmInfo.version);
+	SDL_GetWindowWMInfo(window, &wmInfo);
+
+	mHwnd = wmInfo.info.win.window;
+
 	EnvirmentCheck();
 }
 
@@ -52,3 +60,5 @@ void RenderDX11::Frame()
 {
 
 }
+
+#endif
