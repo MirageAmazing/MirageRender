@@ -93,7 +93,7 @@ int main()
 	bool isRun = true;
 	SDL_Window *window = 0;
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
 	
 	auto render = BaseRender::GetRender(RenderType::OpenGL40, 800, 600, window);
 
