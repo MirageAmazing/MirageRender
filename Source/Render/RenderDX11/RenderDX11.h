@@ -11,7 +11,7 @@
 class RenderDX11 :public BaseRender
 {
 public:
-	RenderDX11(int iScreenWidth, int iScreenHeight, HWND hWnd);
+	RenderDX11(int iScreenWidth, int iScreenHeight, void* pWindowHandle);
 	~RenderDX11();
 
 	void Frame() override;

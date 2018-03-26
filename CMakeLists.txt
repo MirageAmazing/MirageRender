@@ -19,9 +19,10 @@ endif(MSVC)
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")  
     find_package(OpenGL REQUIRED)
     find_package(SDL2 REQUIRED)
-    include_directories(${SDL2_INCLUDE_DIRS})
     include_directories(${OPENGL_INCLUDE_DIRS})
-    target_link_libraries(MirageRender ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${SDL2_LIBRARIES})
+    include_directories(${SDL2_INCLUDE_DIRS})
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Plugin/Linux/glew-2.1.0/include)  
+    link_directories(${CMAKE_CURRENT_SOURCE_DIR}/Plugin/Linux/glew-2.1.0/lib)  
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")  
 
 # Create filter by directory in MSVC
@@ -66,3 +67,7 @@ set(all_files ${project_headers} ${project_cpps})
 add_executable(MirageRender ${all_files})
 
 source_group_by_dir(all_files)
+
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")  
+    target_link_libraries(MirageRender ${OPENGL_LIBRARIES} ${SDL2_LIBRARIES} libGLEW.a)
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux") 

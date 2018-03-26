@@ -8,7 +8,7 @@ int main()
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
 	
-	auto render = BaseRender::GetRender(RenderType::DirectX11, 800, 600, window);
+	auto render = BaseRender::GetRender(RenderType::OpenGL40, 800, 600, window);
 
 	while(isRun)
 	{

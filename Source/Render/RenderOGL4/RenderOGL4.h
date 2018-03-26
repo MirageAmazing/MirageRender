@@ -5,6 +5,8 @@
 
 #if defined(MIRAGE_PLATFORM_LINUX)
 
+#pragma comment(lib, "libGLEW.a")
+
 class RenderOGL4 :public BaseRender
 {
 public:
