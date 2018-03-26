@@ -1,8 +1,8 @@
 echo "************************************"
-echo MirageRender build begin on Linux
+echo MERender build begin on Linux
 echo "************************************"
 
-str="ME_Render_Build_Linux"
+str="MERender_Build_Linux"
 
 cd ../
 
@@ -15,6 +15,6 @@ cd $str
 cmake ../MirageRender
 
 echo "************************************"
-echo MirageRender build end on Linux
+echo MERender build end on Linux
 echo "************************************"
 exit 0
