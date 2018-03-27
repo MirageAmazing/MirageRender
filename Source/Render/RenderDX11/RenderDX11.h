@@ -23,6 +23,18 @@ protected:
 
 private:
 	HWND mHwnd;
+	bool mFullScreen = false;
+	bool mVsyncEnabled = false;
+	int mVideoCardMemory = 0;
+
+	IDXGISwapChain* mSwapChain;
+	ID3D11Device* mDevice;
+	ID3D11DeviceContext* mDeviceContext;
+	ID3D11RenderTargetView* mRTView;
+	ID3D11Texture2D* mDepthStencilBuffer;
+	ID3D11DepthStencilState* mDepthStencilState;
+	ID3D11DepthStencilView* mDepthStencilView;
+	ID3D11RasterizerState* mRasterizerState;
 };
 
 #endif

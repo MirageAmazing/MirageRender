@@ -2,9 +2,6 @@
 #include "SDL2/SDL_main.h"
 #include "./Render/BaseRender/BaseRender.h"
 
-#pragma comment(lib ,"SDL2.lib")  
-#pragma comment(lib ,"SDL2main.lib") 
-
 int main(int argc, char* argv[])
 {
 	bool isRun = true;
@@ -13,6 +10,7 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
 	
 	auto render = BaseRender::GetRender(RenderType::DirectX11, 800, 600, window);
+	float colorVar = 0;
 
 	while(isRun)
 	{
@@ -24,7 +22,11 @@ int main(int argc, char* argv[])
 				break;
 			}
 		}
+		render->SetClearColor(0, colorVar, 0);
 		render->Frame();
+
+		if (colorVar > 1) colorVar = 0;
+		else colorVar += 0.001f;
 	}
 
 	SDL_DestroyWindow(window);

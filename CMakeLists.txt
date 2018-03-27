@@ -76,7 +76,7 @@ IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
     target_link_libraries(MirageRender ${OPENGL_LIBRARIES} ${SDL2_LIBRARIES} libGLEW.a)   
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux") 
 IF(CMAKE_SYSTEM_NAME MATCHES "Windows")
-    target_link_libraries(MirageRender SDL2.lib SDL2main.lib SDL2test.lib SDL2.dll)   
+    target_link_libraries(MirageRender SDL2.lib SDL2main.lib SDL2test.lib SDL2.dll d3d11.lib dxgi.lib)   
 
     SET_TARGET_PROPERTIES(MirageRender PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:WINDOWS")
     SET_TARGET_PROPERTIES(MirageRender PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
