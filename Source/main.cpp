@@ -1,7 +1,11 @@
 ﻿#include "SDL2/SDL.h"
+#include "SDL2/SDL_main.h"
 #include "./Render/BaseRender/BaseRender.h"
 
-int main()
+#pragma comment(lib ,"SDL2.lib")  
+#pragma comment(lib ,"SDL2main.lib") 
+
+int main(int argc, char* argv[])
 {
 	bool isRun = true;
 	SDL_Window *window = 0;

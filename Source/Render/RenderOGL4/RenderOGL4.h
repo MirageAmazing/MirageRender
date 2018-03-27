@@ -1,10 +1,9 @@
 #pragma once
 
 #include "../BaseRender/BaseRender.h"
-#include <GL/glew.h>
 
 #if defined(MIRAGE_PLATFORM_LINUX)
-
+#include <GL/glew.h>
 #pragma comment(lib, "libGLEW.a")
 
 class RenderOGL4 :public BaseRender

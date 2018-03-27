@@ -1,12 +1,20 @@
 #include "RenderDX11.h"
 
 #if defined(MIRAGE_PLATFORM_WINDOWS)
+#include "SDL2\SDL.h"
+#include "SDL2\SDL_syswm.h"
 
 RenderDX11::RenderDX11(int iScreenWidth, int iScreenHeight, void* pWindowHandle) :BaseRender(iScreenWidth, iScreenHeight, pWindowHandle)
 {
+	if (pWindowHandle == nullptr)
+	{
+		// TODO: Exception
+		return;
+	}
+
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
-	SDL_GetWindowWMInfo(window, &wmInfo);
+	SDL_GetWindowWMInfo((SDL_Window*)pWindowHandle, &wmInfo);
 
 	mHwnd = wmInfo.info.win.window;
 
@@ -45,7 +53,7 @@ bool RenderDX11::EnvirmentCheck()
 
 	DXGI_ADAPTER_DESC adapterDesc;
 	adapter->GetDesc(&adapterDesc);
-
+	
 	MessageBox(mHwnd, adapterDesc.Description, TEXT("ME"), MB_YESNO);
 
 	return true;
