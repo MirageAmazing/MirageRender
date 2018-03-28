@@ -23,9 +23,6 @@ protected:
 
 private:
 	HWND mHwnd;
-	bool mFullScreen = false;
-	bool mVsyncEnabled = false;
-	int mVideoCardMemory = 0;
 
 	IDXGISwapChain* mSwapChain;
 	ID3D11Device* mDevice;

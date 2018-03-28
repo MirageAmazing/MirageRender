@@ -58,6 +58,16 @@ void BaseRender::SetClearColor(float r, float g, float b)
 	this->OnSetClearColor();
 }
 
+void BaseRender::SetFullScreen(bool value) 
+{
+	mFullScreen = value;
+}
+
+void BaseRender::SetVsyncEnable(bool value)
+{
+	mVsyncEnabled = value;
+}
+
 void BaseRender::OnSetClearColor()
 {
 }
