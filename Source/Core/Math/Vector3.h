@@ -1,5 +1,6 @@
 #pragma once
-#include "./Core.h"
+#include "../Core.h"
+#include <cmath>
 
 namespace MirageMath
 {
@@ -153,7 +154,7 @@ namespace MirageMath
 	template<class T>
 	MEINLINE Vector3<T> operator / (const T InValue, const Vector3<T>& InVec)
 	{
-		return Vector3(
+		return Vector3<T>(
 			InVec.x == 0 ? 0 : (InValue / InVec.x),
 			InVec.y == 0 ? 0 : (InValue / InVec.y),
 			InVec.z == 0 ? 0 : (InValue / InVec.z)

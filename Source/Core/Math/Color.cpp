@@ -26,7 +26,7 @@ namespace MirageMath
 		a = 1;
 	}
 
-	Color::Color(const Vector4& InValue)
+	Color::Color(const Vector4f& InValue)
 	{
 		r = InValue.x;
 		g = InValue.y;

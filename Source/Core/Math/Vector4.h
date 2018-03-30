@@ -85,7 +85,7 @@ namespace MirageMath
 	template<class T>
 	MEINLINE Vector4<T> operator / (const T InValue, const Vector4<T>& InVec)
 	{
-		return Vector4(
+		return Vector4<T>(
 			InVec.x == 0 ? 0 : (InValue / InVec.x),
 			InVec.y == 0 ? 0 : (InValue / InVec.y),
 			InVec.z == 0 ? 0 : (InValue / InVec.z),

@@ -1,3 +1,3 @@
 #pragma once
 
-#include "HAL\Platform.h"
+#include "HAL/Platform.h"

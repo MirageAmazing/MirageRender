@@ -10,7 +10,7 @@ namespace MirageMath
 		Color(float InR, float InG, float InB, float InA);
 		Color(float InR, float InG, float InB);
 		Color(const Color& InValue);
-		Color(const Vector4& InValue);
+		Color(const Vector4f& InValue);
 
 		void operator = (const Color& InValue);
 		bool operator == (const Color& InValue) const;

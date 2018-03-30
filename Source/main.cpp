@@ -1,8 +1,8 @@
 ﻿#include "SDL2/SDL.h"
 #include "SDL2/SDL_main.h"
 #include "./Render/BaseRender/BaseRender.h"
-#include "Core\Math\Vector2.h"
-#include "Core\Math\Vector3.h"
+#include "Core/Math/Vector2.h"
+#include "Core/Math/Vector3.h"
 
 using namespace MirageMath;
 
@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
 	
-	auto render = BaseRender::GetRender(RenderType::DirectX11, 800, 600, window);
+	auto render = BaseRender::GetRender(RenderType::OpenGL40, 800, 600, window);
 	float colorVar = 0;
 
 	while(isRun)
