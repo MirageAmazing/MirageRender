@@ -114,3 +114,8 @@ typedef signed long long int64; //64-bit signed.
 typedef char CHAR8;
 typedef char16_t CHAR16;
 typedef char32_t CHAR32;
+
+typedef float f32;
+typedef double f64;
+
+#define MEINLINE inline

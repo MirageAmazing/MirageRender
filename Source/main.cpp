@@ -1,9 +1,17 @@
 ﻿#include "SDL2/SDL.h"
 #include "SDL2/SDL_main.h"
 #include "./Render/BaseRender/BaseRender.h"
+#include "Core\Math\Vector2.h"
+#include "Core\Math\Vector3.h"
+
+using namespace MirageMath;
+
+void TestMain();
 
 int main(int argc, char* argv[])
 {
+	TestMain();
+
 	bool isRun = true;
 	SDL_Window *window = 0;
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -32,4 +40,20 @@ int main(int argc, char* argv[])
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 	return 0;
+}
+
+void TestMain()
+{
+	Vector2f vecA(12, 90);
+	Vector2f vecB(65, 45);
+
+	auto vecC = 2.0f*vecA + 300.0f/vecB;
+	auto result = Vector2f::Dot(vecA, vecB);
+
+	Vector3f vecAA(1, 2, 3);
+	Vector3f vecBB(2, 24, 13);
+	auto vecCC = vecAA + vecBB + Vector3f::Left;
+
+	int x = 0;
+	x++;
 }
