@@ -2,8 +2,7 @@
 
 namespace MirageMath
 {
-	template<class T>
-	class TRang
+	template<class T> class TRang
 	{
 	public:
 		TRang(T start, T end) {}
