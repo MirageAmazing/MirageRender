@@ -146,13 +146,13 @@ namespace MirageMath
 	template<class T> const Vector3<T> Vector3<T>::Front = Vector3<T>(0, 0, 1);
 	template<class T> const Vector3<T> Vector3<T>::Back = Vector3<T>(0, 0, -1);
 
-	template<class T>
-	MEINLINE Vector3<T> operator * (const T InValue, const Vector3<T>& InVec)
+	template<class T, class F>
+	MEINLINE Vector3<T> operator * (const F InValue, const Vector3<T>& InVec)
 	{
 		return InVec*InValue;
 	}
-	template<class T>
-	MEINLINE Vector3<T> operator / (const T InValue, const Vector3<T>& InVec)
+	template<class T, class F>
+	MEINLINE Vector3<T> operator / (const F InValue, const Vector3<T>& InVec)
 	{
 		return Vector3<T>(
 			InVec.x == 0 ? 0 : (InValue / InVec.x),

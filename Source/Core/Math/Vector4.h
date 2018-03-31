@@ -77,13 +77,13 @@ namespace MirageMath
 		T x, y, z, w;
 	};
 
-	template<class T>
-	MEINLINE Vector4<T> operator * (const T InValue, const Vector4<T>& InVec)
+	template<class T, class F>
+	MEINLINE Vector4<T> operator * (const F InValue, const Vector4<T>& InVec)
 	{
 		return InVec*InValue;
 	}
-	template<class T>
-	MEINLINE Vector4<T> operator / (const T InValue, const Vector4<T>& InVec)
+	template<class T, class F>
+	MEINLINE Vector4<T> operator / (const F InValue, const Vector4<T>& InVec)
 	{
 		return Vector4<T>(
 			InVec.x == 0 ? 0 : (InValue / InVec.x),
