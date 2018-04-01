@@ -3,6 +3,7 @@
 #include "./Render/BaseRender/BaseRender.h"
 #include "Core/Math/Vector2.h"
 #include "Core/Math/Vector3.h"
+#include "Core/Math/Matrix.h"
 
 using namespace MirageMath;
 
@@ -17,7 +18,12 @@ int main(int argc, char* argv[])
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
 	
-	auto render = BaseRender::GetRender(RenderType::OpenGL40, 800, 600, window);
+	#if defined(MIRAGE_PLATFORM_WINDOWS)
+		auto render = BaseRender::GetRender(RenderType::DirectX11, 800, 600, window);
+	#else
+		auto render = BaseRender::GetRender(RenderType::OpenGL40, 800, 600, window);
+	#endif
+
 	float colorVar = 0;
 
 	while(isRun)
@@ -53,6 +59,18 @@ void TestMain()
 	Vector3f vecAA(1, 2, 3);
 	Vector3f vecBB(2, 24, 13);
 	auto vecCC = vecAA + vecBB + Vector3f::Left;
+
+	Matrix4x4f mA = Matrix4x4f::IndentityMatrix();
+	auto mB = mA*32.0f;
+	mB = 23 * mB;
+
+	Matrix3x3f m3A = Matrix3x3f::IndentityMatrix();
+	m3A[0][1] = 23;
+	m3A[1][0] = 3;
+
+	auto m3A_Invered = m3A.Inverse();
+
+	auto m3A_Result = m3A*m3A_Invered;
 
 	int x = 0;
 	x++;

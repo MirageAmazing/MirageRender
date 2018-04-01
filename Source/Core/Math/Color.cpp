@@ -10,7 +10,7 @@ namespace MirageMath
 		a = 1;
 	}
 
-	Color::Color(float InR, float InG, float InB, float InA)
+	Color::Color(f32 InR, f32 InG, f32 InB, f32 InA)
 	{
 		r = InR;
 		g = InG;
@@ -18,7 +18,7 @@ namespace MirageMath
 		a = InA;
 	}
 
-	Color::Color(float InR, float InG, float InB)
+	Color::Color(f32 InR, f32 InG, f32 InB)
 	{
 		r = InR;
 		g = InG;

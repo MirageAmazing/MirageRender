@@ -7,14 +7,14 @@ namespace MirageMath
 	{
 	public:
 		Color();
-		Color(float InR, float InG, float InB, float InA);
-		Color(float InR, float InG, float InB);
+		Color(f32 InR, f32 InG, f32 InB, f32 InA);
+		Color(f32 InR, f32 InG, f32 InB);
 		Color(const Color& InValue);
 		Color(const Vector4f& InValue);
 
 		void operator = (const Color& InValue);
 		bool operator == (const Color& InValue) const;
 
-		float r = 0, g = 0, b = 0, a = 1;
+		f32 r = 0, g = 0, b = 0, a = 1;
 	};
 }
