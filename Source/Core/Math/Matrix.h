@@ -42,7 +42,7 @@ namespace MirageMath
 			}
 		}
 
-		Matrix4x4 operator + (const Matrix4x4&) const
+		Matrix4x4 operator + (const Matrix4x4& InM) const
 		{
 			Matrix4x4 matrix;
 			for (int i = 0; i < 4; i++)
@@ -140,7 +140,7 @@ namespace MirageMath
 			return matrix*det;
 		}
 
-		void SetElement(const int, const int, const T)
+		void SetElement(const int row, const int column, const T InData)
 		{
 			if (row >= 0 && row <= 3 && column >= 0 && column <= 3)
 			{
@@ -317,7 +317,7 @@ namespace MirageMath
 			}
 		}
 
-		Matrix3x3 operator + (const Matrix3x3&) const
+		Matrix3x3 operator + (const Matrix3x3& InM) const
 		{
 			Matrix3x3 matrix;
 			for (int i = 0; i < 3; i++)
@@ -408,7 +408,7 @@ namespace MirageMath
 			return matrix*det;
 		}
 
-		void SetElement(const int row, const int column, const T)
+		void SetElement(const int row, const int column, const T InData)
 		{
 			if (row >= 0 && row <= 3 && column >= 0 && column <= 3)
 			{

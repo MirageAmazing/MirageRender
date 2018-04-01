@@ -13,10 +13,17 @@ int main(int argc, char* argv[])
 {
 	TestMain();
 
+	#if defined(MIRAGE_PLATFORM_WINDOWS)
+	#else
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	#endif
+	
 	bool isRun = true;
 	SDL_Window *window = 0;
-	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN);
+	SDL_Init(SDL_INIT_VIDEO);
+	window = SDL_CreateWindow("MERender", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
 	
 	#if defined(MIRAGE_PLATFORM_WINDOWS)
 		auto render = BaseRender::GetRender(RenderType::DirectX11, 800, 600, window);
