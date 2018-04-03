@@ -1,5 +1,7 @@
 ﻿#include "SDL2/SDL.h"
 #include "SDL2/SDL_main.h"
+
+#include "MirageEngine.h"
 #include "./Render/BaseRender/BaseRender.h"
 #include "Core/Math/Vector2.h"
 #include "Core/Math/Vector3.h"
@@ -76,8 +78,9 @@ void TestMain()
 	m3A[1][0] = 3;
 
 	auto m3A_Invered = m3A.Inverse();
-
 	auto m3A_Result = m3A*m3A_Invered;
+
+	auto size = sizeof(MEGUID);
 
 	int x = 0;
 	x++;

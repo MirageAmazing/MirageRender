@@ -287,7 +287,7 @@ namespace MirageMath
 	//----------------------------------------------------------
 
 	template<class T>
-	struct Matrix3x3
+	struct alignas(8) Matrix3x3
 	{
 	public:
 		Matrix3x3()

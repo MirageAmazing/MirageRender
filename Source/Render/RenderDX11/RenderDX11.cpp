@@ -304,6 +304,7 @@ void RenderDX11::Frame()
 	mDeviceContext->ClearRenderTargetView(mRTView, clearColor);
 	mDeviceContext->ClearDepthStencilView(mDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
+
 	mSwapChain->Present(mVsyncEnabled ? 1 : 0, 0);
 }
 
