@@ -1,4 +1,6 @@
-﻿#include "SDL2/SDL.h"
+﻿#include <string>
+
+#include "SDL2/SDL.h"
 #include "SDL2/SDL_main.h"
 
 #include "MirageEngine.h"
@@ -6,7 +8,9 @@
 #include "Core/Math/Vector2.h"
 #include "Core/Math/Vector3.h"
 #include "Core/Math/Matrix.h"
+#include "Core/Math/VersionNumber.h"
 
+using namespace std;
 using namespace MirageMath;
 
 void TestMain();
@@ -80,7 +84,28 @@ void TestMain()
 	auto m3A_Invered = m3A.Inverse();
 	auto m3A_Result = m3A*m3A_Invered;
 
-	auto size = sizeof(MEGUID);
+	auto size = sizeof(MEUID);
+
+	VersionNumber vn(1, 2, 4);
+	VersionNumber vn1 = "3"_v;
+	VersionNumber vn2("2.");
+	VersionNumber vn3("2.1");
+	VersionNumber vn4("2.1.");
+	VersionNumber vn5("2.1.1");
+	VersionNumber vn6 = "2.1.2"_v;
+
+	if (vn6 > vn5)
+	{
+		vn = vn1;
+	}	
+	if (vn2 > vn3)
+	{
+		vn = vn1;
+	}
+	if ("1.1.2"_v > "1.0.9"_v)
+	{
+		vn = vn1;
+	}
 
 	int x = 0;
 	x++;
