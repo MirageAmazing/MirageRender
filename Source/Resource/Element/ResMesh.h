@@ -10,6 +10,7 @@ namespace MirageResource
 	class ResMesh:IResElement
 	{
 		friend class ResouceSystem;
+
 	private:
 		ResMesh()
 		{
@@ -35,5 +36,6 @@ namespace MirageResource
 	private:
 
 		list<VertexFormat> mVertexList;
+		list<uint32> mIndices;
 	};
 }
