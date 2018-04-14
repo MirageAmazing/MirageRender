@@ -9,11 +9,17 @@ namespace MirageResource
 {
 	class ResMesh:IResElement
 	{
-	public:
-		ResMesh(){}
+		friend class ResouceSystem;
+
+	private:
+		ResMesh()
+		{
+			mElementType = eResElementType::Mesh;
+		}
 		~ResMesh() {}
 
-		void SetVertexs(list<Vertex> vertexs)
+	public:
+		void SetVertexs(list<VertexFormat> vertexs)
 		{
 			mVertexList = vertexs;
 		}
@@ -21,9 +27,15 @@ namespace MirageResource
 		{
 			mVertexList.push_back(vertex);
 		}
+		list<VertexFormat> GetVertexs(){return mVertexList;}
+		void Clear()
+		{
+			mVertexList.clear();
+		}
 
 	private:
 
-		list<Vertex> mVertexList;
+		list<VertexFormat> mVertexList;
+		list<uint32> mIndices;
 	};
 }

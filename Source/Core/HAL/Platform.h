@@ -121,6 +121,6 @@ typedef float f32;
 typedef double f64;
 
 // Custom type
-typedef unsigned long long MEGUID;
+typedef unsigned long long MEUID;
 
 #define MEINLINE inline
