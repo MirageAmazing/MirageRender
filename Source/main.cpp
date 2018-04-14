@@ -9,6 +9,7 @@
 #include "Core/Math/Vector3.h"
 #include "Core/Math/Matrix.h"
 #include "Core/Math/VersionNumber.h"
+#include "Resource/ResourceSystem.h"
 
 using namespace std;
 using namespace MirageMath;
@@ -95,17 +96,23 @@ void TestMain()
 	VersionNumber vn6 = "2.1.2"_v;
 
 	if (vn6 > vn5)
-	{
 		vn = vn1;
-	}	
 	if (vn2 > vn3)
-	{
 		vn = vn1;
-	}
 	if ("1.1.2"_v > "1.0.9"_v)
-	{
 		vn = vn1;
-	}
+
+	auto rs = MirageResource::ResouceSystem::GetInstance();
+	auto meshData = rs->CreateMeshRes();
+	MirageResource::Vertex v1, v2, v3;
+	v1.position = Vector3f(0.0f, 0.0f, 0.0f);
+	v2.position = Vector3f(10, 10, 10);
+	v3.position = Vector3f(10, 10, 0);
+	meshData->AddVertex(v1);
+	meshData->AddVertex(v2);
+	meshData->AddVertex(v3);
+
+	auto ispod = std::is_pod<Vector3f>::value;
 
 	int x = 0;
 	x++;

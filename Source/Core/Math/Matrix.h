@@ -242,9 +242,9 @@ namespace MirageMath
 		{
 			Matrix4x4<T> matrix;
 
-			matrix.data[0][0] = 2.0F / (right - left);
-			matrix.data[1][1] = 2.0F / (top - bottom);
-			matrix.data[2][2] = 2.0F / (n - f);
+			matrix.data[0][0] = 2.0f / (right - left);
+			matrix.data[1][1] = 2.0f / (top - bottom);
+			matrix.data[2][2] = 2.0f / (n - f);
 			matrix.data[3][0] = (left + right) / (left - right);
 			matrix.data[3][1] = (bottom + top) / (bottom - top);
 			matrix.data[3][2] = (n + f) / (f - n);

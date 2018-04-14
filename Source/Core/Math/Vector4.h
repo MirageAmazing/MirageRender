@@ -6,13 +6,7 @@ namespace MirageMath
 	template<class T> struct Vector4
 	{
 	public:
-		Vector4()
-		{
-			x = 0;
-			y = 0;
-			z = 0;
-			w = 0;
-		}
+		Vector4() = default;
 		Vector4(T InX, T InY, T InZ)
 		{
 			x = InX;
@@ -74,7 +68,7 @@ namespace MirageMath
 			w -= InV.w;
 		}
 
-		T x, y, z, w;
+		T x=0, y=0, z=0, w=0;
 	};
 
 	template<class T, class F>

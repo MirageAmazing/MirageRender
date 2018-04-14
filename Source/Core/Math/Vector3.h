@@ -7,12 +7,7 @@ namespace MirageMath
 	template<class T> struct Vector3
 	{
 	public:
-		Vector3()
-		{
-			x = 0;
-			y = 0;
-			z = 0;
-		}
+		Vector3() = default;
 		explicit Vector3(T In)
 		{
 			x = In;
@@ -135,7 +130,7 @@ namespace MirageMath
 		static const Vector3<T> Front;
 		static const Vector3<T> Back;
 
-		T x, y, z;
+		T x=0, y=0, z=0;
 	};
 
 	template<class T> const Vector3<T> Vector3<T>::Zero = Vector3<T>(0, 0, 0);

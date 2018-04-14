@@ -6,7 +6,7 @@ namespace Mirage
 	template<class T>
 	class ISystem
 	{
-	public:
+	public:		
 		static T* GetInstance()
 		{
 			if (mSystem == nullptr)
@@ -40,10 +40,13 @@ namespace Mirage
 				mSystem->UnInitialize();
 		}
 
-		VersionNumber mVersion;
+		MirageMath::VersionNumber mVersion;
 		MEUID mUID;
 
 	private:
 		static T* mSystem;
 	};
+
+	template<class T>
+	T* ISystem<T>::mSystem = nullptr;
 }

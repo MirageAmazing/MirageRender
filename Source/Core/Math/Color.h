@@ -6,7 +6,7 @@ namespace MirageMath
 	struct Color
 	{
 	public:
-		Color();
+		Color() = default;
 		Color(f32 InR, f32 InG, f32 InB, f32 InA);
 		Color(f32 InR, f32 InG, f32 InB);
 		Color(const Color& InValue);

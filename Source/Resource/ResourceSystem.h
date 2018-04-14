@@ -52,5 +52,7 @@ namespace MirageResource
 
 	private:
 		unordered_set<shared_ptr<IResElement>> mResElementHeap;
+
+		friend ISystem<ResouceSystem>;
 	};
 }

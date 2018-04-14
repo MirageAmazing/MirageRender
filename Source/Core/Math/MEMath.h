@@ -19,12 +19,12 @@ namespace MirageMath
 	#define ME_SQRT2		1.41421356237309504880   // sqrt(2)
 	#define ME_SQRT1_2		0.707106781186547524401  // 1/sqrt(2)
 
-	inline float DegreeToRadians(float degree) { return degree*ME_PI / 180.0f; }
-	inline float RadiansToDegree(float radians) { return radians*180.0f / ME_PI; }
+	MEINLINE f32 DegreeToRadians(float degree) { return degree*ME_PI / 180.0f; }
+	MEINLINE f32 RadiansToDegree(float radians) { return radians*180.0f / ME_PI; }
 
 	#define F32NAN 0x7F800001U
 	#define F64NAN 0x7FF0000000000001ULL
 
 	//generate guid
-	MEINLINE MEUID GenerateUID();
+	extern MEINLINE MEUID GenerateUID();
 }

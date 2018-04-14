@@ -33,7 +33,7 @@ namespace MirageResource
 	protected:
 		IResElement() 
 		{
-			mGuid = GenerateUID();
+			mGuid = MirageMath::GenerateUID();
 		}
 		virtual ~IResElement() {}
 

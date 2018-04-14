@@ -6,7 +6,6 @@ namespace MirageMath
 	MEUID uid{ 0 };
 	MEUID GenerateUID()
 	{
-		uid++;
-		return uid;
+		return uid++;
 	}
 }

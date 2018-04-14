@@ -2,14 +2,6 @@
 
 namespace MirageMath
 {
-	Color::Color()
-	{
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 1;
-	}
-
 	Color::Color(f32 InR, f32 InG, f32 InB, f32 InA)
 	{
 		r = InR;

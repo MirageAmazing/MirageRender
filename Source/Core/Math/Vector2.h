@@ -6,11 +6,7 @@ namespace MirageMath
 	template<class T> struct Vector2
 	{
 	public:
-		Vector2() 
-		{
-			x = 0;
-			y = 0;
-		}
+		Vector2() = default;
 		Vector2(T InX, T InY)
 		{
 			x = InX;
@@ -23,15 +19,15 @@ namespace MirageMath
 			y = InV.y;
 		}
 
-		Vector2 operator + (const Vector2&InV)
+		Vector2 operator + (const Vector2&InV)  const
 		{
 			return Vector2(x + InV.x, y + InV.y);
 		}
-		Vector2 operator - (const Vector2& InV)
+		Vector2 operator - (const Vector2& InV)  const
 		{
 			return Vector2(x - InV.x, y - InV.y);
 		}
-		Vector2 operator * (const Vector2& InV)
+		Vector2 operator * (const Vector2& InV)  const
 		{
 			return Vector2(x * InV.x, y * InV.y);
 		}
@@ -39,7 +35,7 @@ namespace MirageMath
 		{
 			return Vector2(x * In, y * In);
 		}
-		Vector2 operator / (const Vector2& InV)
+		Vector2 operator / (const Vector2& InV) const
 		{
 			return Vector2(x / InV.x, y / InV.y);
 		}
@@ -51,12 +47,12 @@ namespace MirageMath
 		{
 			return (x == InValue.x) && (y == InValue.y);
 		}
-		void operator += (const Vector2& InV)
+		void operator += (const Vector2& InV) const
 		{
 			x += InV.x;
 			y += InV.y;
 		}
-		void operator -= (const Vector2& InV)
+		void operator -= (const Vector2& InV)  const
 		{
 			x -= InV.x;
 			y -= InV.y;
@@ -71,7 +67,7 @@ namespace MirageMath
 			y /= length;
 			return true;
 		}
-		T Length()
+		T Length() const
 		{
 			return std::sqrt(x*x + y*y);
 		}
@@ -81,7 +77,7 @@ namespace MirageMath
 			return InA | InB;
 		}
 
-		T x, y;
+		T x=0, y=0;
 	};
 
 
