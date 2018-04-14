@@ -13,16 +13,17 @@ namespace MirageResource
 		ResMesh(){}
 		~ResMesh() {}
 
-		void SetVertexs(list<VertexFormat> vertexs)
+		void SetVertexs(list<Vertex> vertexs)
 		{
 			mVertexList = vertexs;
 		}
-		void AddVertex(VertexFormat vertex)
+		void AddVertex(Vertex vertex)
 		{
 			mVertexList.push_back(vertex);
 		}
+
 	private:
 
-		list<VertexFormat> mVertexList;
+		list<Vertex> mVertexList;
 	};
 }

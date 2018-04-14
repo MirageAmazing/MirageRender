@@ -13,4 +13,6 @@ namespace MirageResource
 		Vector2f uv;
 		Color color;
 	};
+
+	typedef VertexFormat Vertex;
 }
