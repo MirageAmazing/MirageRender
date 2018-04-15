@@ -1,4 +1,6 @@
 #pragma once
+#include "Vector3.h"
+#include "Quaternion.h"
 
 namespace MirageMath
 {
@@ -9,7 +11,9 @@ namespace MirageMath
 		~Transform();
 
 	private:
-
+		Vector3f mLocation;
+		Vector3f mScale;
+		Quaternion mRotation;
 	};
 
 }

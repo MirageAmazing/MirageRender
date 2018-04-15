@@ -1,6 +1,7 @@
 #pragma once
 #include "Core\Math\Vector3.h"
 #include "Core\Math\Matrix.h"
+#include <tuple>
 
 namespace MirageMath
 {
@@ -73,16 +74,26 @@ namespace MirageMath
 			CalculateProjectionMatrix(eCameraProjectionType::Ortho);
 		}
 		
-		void SetProjectionType(eCameraProjectionType projectionType) 
+		MEINLINE void SetProjectionType(eCameraProjectionType projectionType)
 		{
 			mProjectionType = projectionType;
 		}
 
-		Matrix4x4f& GetViewMatrix() { return mViewMatrix; }
-		Matrix4x4f& GetProjectionMatrix() { return mProjectionMatrix; }
-		Vector3f GetViewLocation() { return mViewLocation; }
-		Vector3f GetViewTarget() { return mViewTarget; }
-		Vector3f GetViewUp() { return mViewUp; }
+		MEINLINE Matrix4x4f& GetViewMatrix() { return mViewMatrix; }
+		MEINLINE Matrix4x4f& GetProjectionMatrix() { return mProjectionMatrix; }
+		MEINLINE Vector3f GetViewLocation() { return mViewLocation; }
+		MEINLINE Vector3f GetViewTarget() { return mViewTarget; }
+		MEINLINE Vector3f GetViewUp() { return mViewUp; }
+		MEINLINE f32 GetFOV() { return mFOV; }
+		MEINLINE std::tuple<f32, f32> GetNF()
+		{
+			return std::make_tuple(mNear, mFar);
+		}
+		MEINLINE std::tuple<f32, f32, f32, f32> GetLRTB()
+		{
+			return std::make_tuple(mLeft, mRight, mBottom, mTop);
+		}
+		MEINLINE eCameraProjectionType GetProjectionType() { return mProjectionType; }
 
 	private:
 		void CalculateProjectionMatrix(eCameraProjectionType type = eCameraProjectionType::Perspertive)
