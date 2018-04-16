@@ -8,6 +8,7 @@
 #include "Core/Math/Vector2.h"
 #include "Core/Math/Vector3.h"
 #include "Core/Math/Matrix.h"
+#include "Core/Math/Quaternion.h"
 #include "Core/Math/VersionNumber.h"
 #include "Resource/ResourceSystem.h"
 
@@ -113,6 +114,13 @@ void TestMain()
 	meshData->AddVertex(v3);
 
 	auto ispod = std::is_pod<Vector3f>::value;
+
+	auto r1 = DegreeToRadians(180);
+	auto r2 = DegreeToRadians(60);
+	auto r3 = DegreeToRadians(45);
+
+	Quaternion quat(3.14159274, DegreeToRadians(60), DegreeToRadians(45));
+	auto eular = quat.Eular();
 
 	int x = 0;
 	x++;

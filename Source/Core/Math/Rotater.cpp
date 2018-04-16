@@ -2,6 +2,8 @@
 
 namespace MirageMath
 {
+	const Rotater Rotater::Zero = Rotater(0, 0, 0);
+
 	Rotater::Rotater()
 	{
 		pitch = 0;

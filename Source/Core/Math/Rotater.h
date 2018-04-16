@@ -83,6 +83,4 @@ namespace MirageMath
 		/*Rotation around the forward axis(X axis), Tilting your head.*/
 		f32 roll = 0;
 	};
-
-	const Rotater Rotater::Zero = Rotater(0, 0, 0);
 }
