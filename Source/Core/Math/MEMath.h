@@ -21,9 +21,9 @@ namespace MirageMath
 
 	MEINLINE f32 DegreeToRadians(float degree) { return degree*ME_PI / 180.0f; }
 	MEINLINE f32 RadiansToDegree(float radians) { return radians*180.0f / ME_PI; }
-
-	#define F32NAN 0x7F800001U
-	#define F64NAN 0x7FF0000000000001ULL
+	
+	const f32 F32NAN = nanf("");
+	const f64 F64NAN = nan("");
 
 	//generate guid
 	extern MEINLINE MEUID GenerateUID();
