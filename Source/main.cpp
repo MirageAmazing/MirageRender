@@ -119,7 +119,7 @@ void TestMain()
 	auto r2 = DegreeToRadians(60);
 	auto r3 = DegreeToRadians(45);
 
-	Quaternion quat(3.14159274, DegreeToRadians(60), DegreeToRadians(45));
+	Quaternion quat(3.14, 0.6, 0.9);
 	auto eular = quat.Eular();
 
 	int x = 0;

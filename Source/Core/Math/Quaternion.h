@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector3.h"
 #include "Rotater.h"
+#include "Matrix.h"
 #include "MEMath.h"
 using namespace MirageMath;
 
@@ -22,10 +23,12 @@ namespace MirageMath
 			float cp = cos(InPitch*0.5);
 			float sp = sin(InPitch*0.5);
 
-			w = cy * cr * cp + sy * sr * sp;
-			x = cy * sr * cp - sy * cr * sp;
-			y = cy * cr * sp + sy * sr * cp;
-			z = sy * cr * cp - cy * sr * sp;
+			x = cp * cy * sr  + sp * sy * cr;
+			y = sp * cy * cr  + cp * sy * sr;
+			z = cp * sy * cr  - sp * cy * sr;
+			w = cp * cy * cr  - sp * sy * sr;		
+
+			Normalize();
 		}
 
 		Quaternion operator * (const Quaternion& InValue) const;
@@ -75,27 +78,26 @@ namespace MirageMath
 
 		Rotater GetRotater() const
 		{
+			float pitch, yaw, roll;
 			const double Epsilon = 0.0009765625f;
 			const double Threshold = 0.5f - Epsilon;
-			double TEST = w*y - x*z;
+			double test = x*y + w*z;
 
-			float pitch, yaw, roll;
-
-			if (TEST < -Threshold || TEST > Threshold) // ÆæÒì×ËÌ¬,¸©Ñö½ÇÎª¡À90¡ã
+			if (test < -Threshold || test > Threshold) // ÆæÒì×ËÌ¬,¸©Ñö½ÇÎª¡À90¡ã
 			{
-				double sign = copysign(1.0, TEST);
+				double sign = copysign(1.0, test);
 
-				yaw = -2 * sign * (double)atan2(x, w); // yaw
-
-				pitch = sign * (ME_PI / 2.0); // pitch
-
-				roll = 0; // roll
+				yaw = 2 * sign * atan2(x, w);
+				pitch = sign * (ME_PI / 2.0);
+				roll = 0;
 			}
 			else
 			{
-				roll = atan2(2 * (y*z + w*x), w*w - x*x - y*y + z*z);
-				pitch = asin(-2 * (x*z - w*y));
-				yaw = atan2(2 * (x*y + w*z), w*w + x*x - y*y - z*z);
+				double sx{ x*x }, sy{ y*y }, sz{ z*z };
+
+				roll = atan2(2 * (y*w - z*x), 1 - 2 * (sy + sz));
+				pitch = asin(2 * test);
+				yaw = atan2(2 * (x*w - y*z), 1 - 2 * (sx + sz));
 			}
 
 			return Rotater(pitch, yaw, roll);
@@ -103,6 +105,21 @@ namespace MirageMath
 		Vector3f Eular() const
 		{
 			return GetRotater().Eular();
+		}
+		Matrix4x4f GetMatrix() const
+		{
+
+		}
+
+		void Normalize()
+		{
+			float tt = x*x + y*y + z*z + w*w;
+			float t = tt != 0 ? sqrtf(tt) : 1;
+			t = 1.0 / t;
+			x *= t;
+			y *= t;
+			z *= t;
+			w *= t;
 		}
 
 	public:
