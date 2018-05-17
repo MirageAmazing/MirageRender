@@ -4,7 +4,7 @@
 
 namespace MirageMath
 {
-	class  Transform
+	class Transform
 	{
 	public:
 		Transform();
