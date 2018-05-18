@@ -108,7 +108,29 @@ namespace MirageMath
 		}
 		Matrix4x4f GetMatrix() const
 		{
+			Matrix4x4f mat;
+			
+			float sx{ 2 * x*x }, sy{ 2 * y*y }, sz{ 2 * z*z };
+			float sxy{ 2 * x*y }, szw{ 2 * z*w }, sxz{ 2 * x*z }, syw{ 2 * y*w }, syz{ 2 * y*z }, sxw{ 2 * x*w };
 
+			mat[0][0] = 1 - sy - sz;
+			mat[0][1] = sxy - szw;
+			mat[0][2] = sxz + syw;
+			mat[0][3] = 0;
+			mat[1][0] = sxy + szw;
+			mat[1][1] = 1 - sx - sz;
+			mat[1][2] = syz - sxw;
+			mat[1][3] = 0;
+			mat[2][0] = sxz - syw;
+			mat[2][1] = syz + sxw;
+			mat[2][2] = 1 - sx - sy;
+			mat[2][3] = 0;
+			mat[3][0] = 0;
+			mat[3][1] = 0;
+			mat[3][2] = 0;
+			mat[3][3] = 1;
+
+			return mat;
 		}
 
 		void Normalize()

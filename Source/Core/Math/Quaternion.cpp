@@ -28,6 +28,8 @@ namespace MirageMath
 		y = InAxis.y*sin(halfDegree)*reciprocal;
 		z = InAxis.z*sin(halfDegree)*reciprocal;
 		w = cos(halfDegree);
+
+		Normalize();
 	}
 
 	Quaternion Quaternion::operator * (const Quaternion& InValue) const

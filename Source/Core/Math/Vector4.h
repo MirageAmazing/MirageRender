@@ -21,6 +21,13 @@ namespace MirageMath
 			z = InZ;
 			w = InW;
 		}
+		Vector4(T In)
+		{
+			x = In;
+			y = In;
+			z = In;
+			w = In;
+		}
 
 		void operator = (Vector4& InV)
 		{

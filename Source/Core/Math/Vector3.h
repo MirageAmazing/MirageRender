@@ -20,6 +20,12 @@ namespace MirageMath
 			y = InY;
 			z = InZ;
 		}
+		Vector3(T In)
+		{
+			x = In;
+			y = In;
+			z = In;
+		}
 		Vector3(const Vector3& In)
 		{
 			x = In.x;

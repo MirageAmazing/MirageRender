@@ -2,11 +2,5 @@
 
 namespace MirageMath
 {
-	Transform::Transform()
-	{
-	}
 
-	Transform::~Transform()
-	{
-	}
 }

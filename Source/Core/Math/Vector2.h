@@ -12,6 +12,11 @@ namespace MirageMath
 			x = InX;
 			y = InY;
 		}
+		Vector2(T In)
+		{
+			x = In;
+			y = In;
+		}
 
 		void operator = (const Vector2& InV)
 		{
