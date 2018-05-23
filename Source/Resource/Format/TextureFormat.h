@@ -1,9 +1,10 @@
 #pragma once
 
-namespace MirageResource
-{
-	struct TextureFormat
-	{
+namespace Mirage {
+	namespace Resource {
+		struct TextureFormat
+		{
 
-	};
+		};
+	}
 }

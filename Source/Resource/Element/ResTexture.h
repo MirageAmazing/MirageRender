@@ -2,10 +2,11 @@
 #include "../Format/TextureFormat.h"
 #include "IResElement.h"
 
-namespace MirageResource
-{
-	class ResTexture
-	{
+namespace Mirage {
+	namespace Resource {
+		class ResTexture
+		{
 
-	};
+		};
+	}
 }

@@ -5,14 +5,14 @@
 
 using namespace MirageMath;
 
-namespace MirageResource
-{
-	struct VertexFormat
-	{
-		Vector3f position;
-		Vector2f uv;
-		Color color;
-	};
+namespace Mirage {
+	namespace Resource {
+		struct VertexFormat{
+			Vector3f position;
+			Vector2f uv;
+			Color color;
+		};
 
-	typedef VertexFormat Vertex;
+		typedef VertexFormat Vertex;
+	}
 }

@@ -9,50 +9,50 @@
 using namespace std;
 using namespace Mirage;
 
-namespace MirageResource
-{
-	class ResouceSystem final:public ISystem<ResouceSystem>
-	{
-	public:
-		virtual void Initialize() override 
-		{
-		}
-		virtual void UnInitialize() override 
-		{
-		}
-
-		shared_ptr<ResMesh> CreateMeshRes()
-		{
-			shared_ptr<ResMesh> mesh(new ResMesh());
-			shared_ptr<IResElement> resElement = dynamic_pointer_cast<IResElement>(mesh);
-			mResElementHeap.insert(resElement);
-			return mesh;
-		};
-		bool DeleteMeshRes(shared_ptr<ResMesh> resMesh)
-		{
-			shared_ptr<IResElement> resElement = dynamic_pointer_cast<IResElement>(resMesh);
-			if (mResElementHeap.find(resElement) != mResElementHeap.end())
+namespace Mirage {
+	namespace Resource {
+		class ResouceSystem final :public ISystem<ResouceSystem>{
+		public:
+			virtual void Initialize() override
 			{
-				mResElementHeap.erase(resElement);
-				return true;
 			}
-			else
-				return false;
-		}
+			virtual void UnInitialize() override
+			{
+			}
 
-	protected:
-		ResouceSystem() 
-		{
-			mVersion = VersionNumber(0, 0, 1);
-		}
-		~ResouceSystem()
-		{
+			shared_ptr<ResMesh> CreateMeshRes()
+			{
+				shared_ptr<ResMesh> mesh(new ResMesh());
+				shared_ptr<IResElement> resElement = dynamic_pointer_cast<IResElement>(mesh);
+				mResElementHeap.insert(resElement);
+				return mesh;
+			};
+			bool DeleteMeshRes(shared_ptr<ResMesh> resMesh)
+			{
+				shared_ptr<IResElement> resElement = dynamic_pointer_cast<IResElement>(resMesh);
+				if (mResElementHeap.find(resElement) != mResElementHeap.end())
+				{
+					mResElementHeap.erase(resElement);
+					return true;
+				}
+				else
+					return false;
+			}
 
-		}
+		protected:
+			ResouceSystem()
+			{
+				mVersion = VersionNumber(0, 0, 1);
+			}
+			~ResouceSystem()
+			{
 
-	private:
-		unordered_set<shared_ptr<IResElement>> mResElementHeap;
+			}
 
-		friend ISystem<ResouceSystem>;
-	};
+		private:
+			unordered_set<shared_ptr<IResElement>> mResElementHeap;
+
+			friend ISystem<ResouceSystem>;
+		};
+	}
 }

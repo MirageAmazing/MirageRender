@@ -7,28 +7,17 @@ using namespace MirageMath;
 
 namespace MirageMath
 {
+	template<class T>
 	struct Quaternion
 	{
 	public:
 		Quaternion();
-		Quaternion(float InX, float InY, float InZ, float InW);
+		Quaternion(T InX, T InY, T InZ, T InW);
 		Quaternion(const Quaternion& InValue);
-		Quaternion(const Vector3f& InAxis, const float InDegree);
-		Quaternion(float InPitch, float InYaw, float InRoll)
+		Quaternion(const Vector3<T>& InAxis, const T InDegree);
+		Quaternion(T InPitch, T InYaw, T InRoll)
 		{
-			float cy = cosf(InYaw*0.5);
-			float sy = sinf(InYaw*0.5);
-			float cr = cosf(InRoll*0.5);
-			float sr = sinf(InRoll*0.5);
-			float cp = cos(InPitch*0.5);
-			float sp = sin(InPitch*0.5);
-
-			x = cp * cy * sr  + sp * sy * cr;
-			y = sp * cy * cr  + cp * sy * sr;
-			z = cp * sy * cr  - sp * cy * sr;
-			w = cp * cy * cr  - sp * sy * sr;		
-
-			Normalize();
+			SetEular(InPitch, InYaw, InRoll);
 		}
 
 		Quaternion operator * (const Quaternion& InValue) const;
@@ -41,11 +30,11 @@ namespace MirageMath
 			w = result.w;
 			return *this;
 		}
-		Quaternion operator * (const f32 scale) const
+		Quaternion operator * (const T scale) const
 		{
 			return Quaternion(x*scale, y*scale, z*scale, w*scale);
 		}
-		Quaternion operator *= (const f32 scale)
+		Quaternion operator *= (const T scale)
 		{
 			x *= scale;
 			y *= scale;
@@ -53,14 +42,14 @@ namespace MirageMath
 			w *= scale;
 			return *this;
 		}
-		Quaternion operator / (const f32 scale)const
+		Quaternion operator / (const T scale)const
 		{
-			f32 recip = 1.0f / scale;
+			T recip = 1.0f / scale;
 			return Quaternion(recip*x, recip*y, recip*z, recip*w);
 		}
-		Quaternion operator /= (const f32 scale)
+		Quaternion operator /= (const T scale)
 		{
-			f32 recip = 1.0f / scale;
+			T recip = 1.0f / scale;
 			x *= recip;
 			y *= recip;
 			z *= recip;
@@ -76,9 +65,9 @@ namespace MirageMath
 			return x != In.x && y != In.y && z != In.z && w != In.w;
 		}
 
-		Rotater GetRotater() const
+		Rotater<T> GetRotater() const
 		{
-			float pitch, yaw, roll;
+			T pitch, yaw, roll;
 			const double Epsilon = 0.0009765625f;
 			const double Threshold = 0.5f - Epsilon;
 			double test = x*y + w*z;
@@ -100,18 +89,18 @@ namespace MirageMath
 				yaw = atan2(2 * (x*w - y*z), 1 - 2 * (sx + sz));
 			}
 
-			return Rotater(pitch, yaw, roll);
+			return Rotater<T>(pitch, yaw, roll);
 		}
-		Vector3f Eular() const
+		Vector3<T> Eular() const
 		{
 			return GetRotater().Eular();
 		}
-		Matrix4x4f GetMatrix() const
+		Matrix4x4<T> GetMatrix() const
 		{
 			Matrix4x4f mat;
 			
-			float sx{ 2 * x*x }, sy{ 2 * y*y }, sz{ 2 * z*z };
-			float sxy{ 2 * x*y }, szw{ 2 * z*w }, sxz{ 2 * x*z }, syw{ 2 * y*w }, syz{ 2 * y*z }, sxw{ 2 * x*w };
+			T sx{ 2 * x*x }, sy{ 2 * y*y }, sz{ 2 * z*z };
+			T sxy{ 2 * x*y }, szw{ 2 * z*w }, sxz{ 2 * x*z }, syw{ 2 * y*w }, syz{ 2 * y*z }, sxw{ 2 * x*w };
 
 			mat[0][0] = 1 - sy - sz;
 			mat[0][1] = sxy - szw;
@@ -133,10 +122,26 @@ namespace MirageMath
 			return mat;
 		}
 
+		void SetEular(T InPitch, T InYaw, T InRoll){
+			T cy = cosf(InYaw*0.5);
+			T sy = sinf(InYaw*0.5);
+			T cr = cosf(InRoll*0.5);
+			T sr = sinf(InRoll*0.5);
+			T cp = cos(InPitch*0.5);
+			T sp = sin(InPitch*0.5);
+
+			x = cp * cy * sr + sp * sy * cr;
+			y = sp * cy * cr + cp * sy * sr;
+			z = cp * sy * cr - sp * cy * sr;
+			w = cp * cy * cr - sp * sy * sr;
+
+			Normalize();
+		}
+
 		void Normalize()
 		{
-			float tt = x*x + y*y + z*z + w*w;
-			float t = tt != 0 ? sqrtf(tt) : 1;
+			T tt = x*x + y*y + z*z + w*w;
+			T t = tt != 0 ? sqrtf(tt) : 1;
 			t = 1.0 / t;
 			x *= t;
 			y *= t;
@@ -145,6 +150,9 @@ namespace MirageMath
 		}
 
 	public:
-		float x, y, z, w;
+		T x, y, z, w;
 	};
+
+	using Quaternionf = Quaternion<f32>;
+	using QuaternionF = Quaternion<f64>;
 }

@@ -3,18 +3,19 @@
 
 namespace MirageMath
 {
+	template<class T> 
 	struct Color
 	{
 	public:
 		Color() = default;
-		Color(f32 InR, f32 InG, f32 InB, f32 InA);
-		Color(f32 InR, f32 InG, f32 InB);
+		Color(T InR, T InG, T InB, T InA);
+		Color(T InR, T InG, T InB);
 		Color(const Color& InValue);
-		Color(const Vector4f& InValue);
+		Color(const Vector4<T>& InValue);
 
 		void operator = (const Color& InValue);
 		bool operator == (const Color& InValue) const;
 
-		f32 r = 0, g = 0, b = 0, a = 1;
+		T r = 0, g = 0, b = 0, a = 1;
 	};
 }

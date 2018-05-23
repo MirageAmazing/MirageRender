@@ -14,6 +14,7 @@
 
 using namespace std;
 using namespace MirageMath;
+using namespace Mirage::Render;
 
 void TestMain();
 

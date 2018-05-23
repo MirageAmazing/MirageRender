@@ -2,7 +2,8 @@
 
 namespace MirageMath
 {
-	Color::Color(f32 InR, f32 InG, f32 InB, f32 InA)
+	template<class T>
+	Color::Color(T InR, T InG, T InB, T InA)
 	{
 		r = InR;
 		g = InG;
@@ -10,7 +11,8 @@ namespace MirageMath
 		a = InA;
 	}
 
-	Color::Color(f32 InR, f32 InG, f32 InB)
+	template<class T>
+	Color::Color(T InR, T InG, T InB)
 	{
 		r = InR;
 		g = InG;
@@ -18,7 +20,8 @@ namespace MirageMath
 		a = 1;
 	}
 
-	Color::Color(const Vector4f& InValue)
+	template<class T>
+	Color::Color(const Vector4<T>& InValue)
 	{
 		r = InValue.x;
 		g = InValue.y;
@@ -26,6 +29,7 @@ namespace MirageMath
 		a = InValue.w;
 	}
 
+	template<class T>
 	Color::Color(const Color& InValue)
 	{
 		r = InValue.r;
@@ -34,6 +38,7 @@ namespace MirageMath
 		a = InValue.a;
 	}
 
+	template<class T>
 	void Color ::operator  = (const Color& InValue)
 	{
 		r = InValue.r;
@@ -42,6 +47,7 @@ namespace MirageMath
 		a = InValue.a;
 	}
 
+	template<class T>
 	bool Color ::operator  == (const Color& InValue) const
 	{
 		return (r == InValue.r) && (g == InValue.g) && (b == InValue.b) && (a == InValue.a);
