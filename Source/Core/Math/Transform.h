@@ -69,7 +69,7 @@ namespace Mirage{
 				rotation.SetEular(x, y, z);
 			}
 			void AddRotate(f32 x, f32 y, f32 z) {
-				rotation *= Rotaterf(x, y, z).GetQuat();
+				rotation *= Quaternionf::ConvertRotator(Rotaterf(x, y, z));
 			}
 			Quaternionf GetRotate() {
 				return rotation;

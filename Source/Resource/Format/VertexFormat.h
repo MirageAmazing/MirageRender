@@ -1,7 +1,7 @@
 #pragma once
-#include "Core\Math\Vector3.h"
-#include "Core\Math\Vector2.h"
-#include "Core\Math\Color.h"
+#include "../../Core/Math/Vector3.h"
+#include "../../Core/Math/Vector2.h"
+#include "../../Core/Math/Color.h"
 
 using namespace MirageMath;
 
@@ -10,7 +10,7 @@ namespace Mirage {
 		struct VertexFormat{
 			Vector3f position;
 			Vector2f uv;
-			Color color;
+			Colorf color;
 		};
 
 		typedef VertexFormat Vertex;

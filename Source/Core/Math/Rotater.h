@@ -1,6 +1,5 @@
 #pragma once
 #include "Vector3.h"
-#include "Quaternion.h"
 
 namespace MirageMath
 {
@@ -19,16 +18,13 @@ namespace MirageMath
 			roll = InRoll;
 		}
 
-		MEINLINE Rotater operator+(const Rotater& In) const
-		{
+		MEINLINE Rotater operator+(const Rotater& In) const{
 			return Rotater(pitch + In.pitch, yaw + In.yaw, roll + In.roll);
 		}
-		MEINLINE Rotater operator-(const Rotater& In) const
-		{
+		MEINLINE Rotater operator-(const Rotater& In) const{
 			return Rotater(pitch - In.pitch, yaw - In.yaw, roll - In.roll);
 		}
-		MEINLINE Rotater operator*(const T scale) const
-		{
+		MEINLINE Rotater operator*(const T scale) const{
 			return Rotater(pitch*scale, yaw*scale, roll*scale);
 		}
 		MEINLINE void operator+=(const Rotater& In)
@@ -76,10 +72,6 @@ namespace MirageMath
 			return Vector3f(roll, pitch, yaw);
 		}
 
-		Quaternion<T> GetQuat() {
-			return Quaternion<T>(pitch, yaw, roll);
-		}
-
 	public:
 		static Rotater MakeFromEular(const Vector3f& eular) 
 		{
@@ -98,7 +90,7 @@ namespace MirageMath
 		T roll = 0;
 	};
 
-	template<class T> const Rotater Rotater::Zero = Rotater(0, 0, 0);
+	template<class T> const Rotater<T> Rotater<T>::Zero = Rotater<T>(0, 0, 0);
 
 	using Rotaterf = Rotater<f32>;
 	using RotaterF = Rotater<f64>;
